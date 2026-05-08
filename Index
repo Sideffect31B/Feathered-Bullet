@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feathered Bullet</title>
+
+    <style>
+        :root {
+            --logo-gold: #C8A95B;
+            --logo-gold-hover: #E0BE6B;
+            --black: #050505;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--black);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        .site-header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.96);
+            border-bottom: 1px solid rgba(200, 169, 91, 0.25);
+        }
+
+        .header-top {
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+        }
+
+        .logo {
+            width: 200px;
+            height: auto;
+            display: block;
+        }
+
+        .top-nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .top-nav a {
+            color: var(--logo-gold);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: 0.3s ease;
+        }
+
+        .top-nav a:hover {
+            color: var(--logo-gold-hover);
+        }
+
+        /* =========================
+           CATEGORY BAR
+        ========================== */
+
+        .category-bar {
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 42px;
+            background: rgba(0, 0, 0, 0.98);
+            border-top: 1px solid rgba(200, 169, 91, 0.15);
+        }
+
+        .category-bar a {
+            color: var(--logo-gold);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: 0.3s ease;
+        }
+
+        .category-bar a:hover {
+            color: var(--logo-gold-hover);
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.45),
+                    rgba(0, 0, 0, 0.65)
+                ),
+                url("images/brand/hero-image.png");
+
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+
+            display: flex;
+            align-items: center;
+
+            padding: 165px 60px 40px;
+        }
+
+        .hero-content {
+            max-width: 760px;
+
+            background: rgba(0, 0, 0, 0.72);
+
+            border: 1px solid rgba(200, 169, 91, 0.25);
+
+            border-radius: 20px;
+
+            padding: 45px;
+
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.65);
+        }
+
+        .hero-content h1 {
+            font-size: 72px;
+            line-height: 1;
+            margin-bottom: 24px;
+
+            color: var(--logo-gold);
+
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .hero-content p {
+            font-size: 21px;
+            line-height: 1.7;
+
+            color: #ddd;
+
+            max-width: 650px;
+
+            margin-bottom: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+
+            background: var(--logo-gold);
+
+            color: #000;
+
+            padding: 16px 34px;
+
+            border-radius: 6px;
+
+            text-decoration: none;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--logo-gold-hover);
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           GENERAL SECTIONS
+        ========================== */
+
+        section {
+            padding: 80px 60px;
+        }
+
+        .section-title {
+            text-align: center;
+
+            color: var(--logo-gold);
+
+            font-size: 36px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 50px;
+        }
+
+        /* =========================
+           PRODUCTS
+        ========================== */
+
+        .products {
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+            gap: 30px;
+        }
+
+        .product-card {
+            background: rgba(18, 18, 18, 0.92);
+
+            border: 1px solid rgba(200, 169, 91, 0.25);
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            text-align: center;
+
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.55);
+
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+
+            border-color: rgba(200, 169, 91, 0.55);
+        }
+
+        .product-image {
+            height: 190px;
+
+            background: linear-gradient(135deg, #222, #111);
+
+            border-radius: 14px;
+
+            border: 1px solid rgba(200, 169, 91, 0.25);
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            color: #777;
+
+            margin-bottom: 20px;
+
+            text-transform: uppercase;
+
+            font-weight: bold;
+        }
+
+        .product-card h3 {
+            color: var(--logo-gold);
+
+            margin-bottom: 12px;
+
+            text-transform: uppercase;
+        }
+
+        .product-card p {
+            color: #ccc;
+
+            font-size: 15px;
+
+            line-height: 1.6;
+
+            margin-bottom: 20px;
+        }
+
+        .shopify-btn {
+            border: 1px solid var(--logo-gold);
+
+            color: var(--logo-gold);
+
+            padding: 11px 22px;
+
+            text-decoration: none;
+
+            text-transform: uppercase;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            border-radius: 4px;
+
+            display: inline-block;
+
+            transition: 0.3s;
+        }
+
+        .shopify-btn:hover {
+            background: var(--logo-gold);
+            color: #000;
+        }
+
+        /* =========================
+           THEMES
+        ========================== */
+
+        .themes {
+            display: grid;
+
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+            gap: 30px;
+        }
+
+        .theme-card {
+            background: rgba(12, 12, 12, 0.92);
+
+            border: 1px solid rgba(200, 169, 91, 0.25);
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            transition: 0.3s;
+        }
+
+        .theme-card:hover {
+            transform: translateY(-5px);
+
+            border-color: rgba(200, 169, 91, 0.55);
+        }
+
+        .theme-display {
+            height: 230px;
+            background: #111;
+            overflow: hidden;
+        }
+
+        .theme-display img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            display: block;
+
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        .theme-content {
+            padding: 25px;
+        }
+
+        .theme-content h3 {
+            color: var(--logo-gold);
+
+            text-transform: uppercase;
+
+            margin-bottom: 12px;
+        }
+
+        .theme-content p {
+            color: #ccc;
+
+            line-height: 1.6;
+
+            font-size: 15px;
+
+            margin-bottom: 20px;
+        }
+
+        .circle-rotator {
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 15px;
+        }
+
+        .circle-rotator span {
+            width: 15px;
+            height: 15px;
+
+            border-radius: 50%;
+
+            border: 1px solid var(--logo-gold);
+
+            background: #222;
+
+            display: inline-block;
+        }
+
+        .circle-rotator span.active {
+            background: var(--logo-gold);
+
+            box-shadow: 0 0 12px var(--logo-gold);
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        .footer {
+            text-align: center;
+
+            padding: 35px;
+
+            background: var(--black);
+
+            border-top: 1px solid rgba(200, 169, 91, 0.25);
+
+            color: #aaa;
+
+            font-size: 14px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media(max-width: 900px) {
+
+            .header-top {
+                height: 78px;
+                padding: 0 25px;
+            }
+
+            .logo {
+                width: 150px;
+            }
+
+            .top-nav {
+                display: none;
+            }
+
+            .category-bar {
+                height: 44px;
+
+                justify-content: flex-start;
+
+                gap: 24px;
+
+                overflow-x: auto;
+
+                padding: 0 25px;
+            }
+
+            .hero {
+                padding: 150px 25px 40px;
+            }
+
+            .hero-content {
+                padding: 30px;
+            }
+
+            .hero-content h1 {
+                font-size: 46px;
+            }
+
+            .hero-content p {
+                font-size: 18px;
+            }
+
+            section {
+                padding: 60px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="site-header">
+
+        <div class="header-top">
+
+            <img
+                src="images/brand/logo.png"
+                alt="Feathered Bullet Logo"
+                class="logo"
+            >
+
+            <nav class="top-nav">
+                <a href="#products">Products</a>
+                <a href="#themes">Themes</a>
+                <a href="#shop">Shopify Ready</a>
+            </nav>
+
+        </div>
+
+        <nav class="category-bar">
+            <a href="#">Bows</a>
+            <a href="#">Arrows</a>
+            <a href="#">Skins</a>
+            <a href="#">Accessories</a>
+            <a href="#">Charms</a>
+        </nav>
+
+    </header>
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <h1>Built For The Hunt</h1>
+
+            <p>
+                Premium arrow accessories, tactical-style arrow attachments,
+                and custom vinyl skins designed for hunters, archers,
+                and outdoor enthusiasts.
+            </p>
+
+            <a href="#products" class="btn">
+                View Products
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+         PRODUCTS
+    ========================== -->
+
+    <section id="products">
+
+        <h2 class="section-title">
+            Featured Products
+        </h2>
+
+        <div class="products">
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    Arrow Product Image
+                </div>
+
+                <h3>Carbon Hunting Arrows</h3>
+
+                <p>
+                    Durable, lightweight arrows designed for accuracy,
+                    strength, and field-ready performance.
+                </p>
+
+                <a href="#" class="shopify-btn">
+                    Shop Soon
+                </a>
+
+            </div>
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    Attachment Image
+                </div>
+
+                <h3>Arrow Attachments</h3>
+
+                <p>
+                    Field-ready attachments and accessories built
+                    to customize your arrow setup.
+                </p>
+
+                <a href="#" class="shopify-btn">
+                    Shop Soon
+                </a>
+
+            </div>
+
+            <div class="product-card">
+
+                <div class="product-image">
+                    Vinyl Skin Image
+                </div>
+
+                <h3>Vinyl Arrow Skins</h3>
+
+                <p>
+                    Custom vinyl wraps with tactical, camo,
+                    steel, and patriotic design options.
+                </p>
+
+                <a href="#" class="shopify-btn">
+                    Shop Soon
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+         THEMES
+    ========================== -->
+
+    <section id="themes">
+
+        <h2 class="section-title">
+            Style Themes
+        </h2>
+
+        <div class="themes">
+
+            <!-- CAMO -->
+
+            <div class="theme-card">
+
+                <div class="theme-display">
+
+                    <img
+                        id="camoRotator"
+                        src="images/themes/camo/camo-1.png"
+                        alt="Camo Series"
+                    >
+
+                </div>
+
+                <div class="theme-content">
+
+                    <h3>Camo Series</h3>
+
+                    <p>
+                        Hunter-focused camouflage styles for arrows,
+                        wraps, and accessories.
+                    </p>
+
+                    <div class="circle-rotator" data-theme="camo">
+
+                        <span class="active"></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- STEEL -->
+
+            <div class="theme-card">
+
+                <div class="theme-display">
+
+                    <img
+                        id="steelRotator"
+                        src="images/themes/steel/steel-1.png"
+                        alt="Steel Series"
+                    >
+
+                </div>
+
+                <div class="theme-content">
+
+                    <h3>Steel Series</h3>
+
+                    <p>
+                        Industrial brushed metal themes with tactical,
+                        rugged styling.
+                    </p>
+
+                    <div class="circle-rotator" data-theme="steel">
+
+                        <span class="active"></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- PATRIOTIC -->
+
+            <div class="theme-card">
+
+                <div class="theme-display">
+
+                    <img
+                        id="patrioticRotator"
+                        src="images/themes/patriotic/patriotic-1.png"
+                        alt="Patriotic Series"
+                    >
+
+                </div>
+
+                <div class="theme-content">
+
+                    <h3>Patriotic Series</h3>
+
+                    <p>
+                        American-inspired tactical themes with bold
+                        red, white, blue, black, and gold accents.
+                    </p>
+
+                    <div class="circle-rotator" data-theme="patriotic">
+
+                        <span class="active"></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+         SHOPIFY
+    ========================== -->
+
+    <section id="shop">
+
+        <h2 class="section-title">
+            Shopify Integration Ready
+        </h2>
+
+        <div class="product-card">
+
+            <h3>Future Shopify Setup</h3>
+
+            <p>
+                Product buttons are currently placeholders.
+                These can later be replaced with Shopify Buy Buttons,
+                embedded products, or direct checkout links.
+            </p>
+
+            <a href="#" class="btn">
+                Coming Soon
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer class="footer">
+
+        © 2026 Feathered Bullet.
+        Built for hunters, archers, and outdoor performance.
+
+    </footer>
+
+    <!-- =========================
+         ROTATION SCRIPT
+    ========================== -->
+
+    <script>
+
+        const themeRotators = {
+
+            camo: {
+
+                imageElement:
+                    document.getElementById("camoRotator"),
+
+                images: [
+
+                    "images/themes/camo/camo-1.png",
+                    "images/themes/camo/camo-2.png",
+                    "images/themes/camo/camo-3.png",
+                    "images/themes/camo/camo-4.png",
+                    "images/themes/camo/camo-5.png",
+                    "images/themes/camo/camo-6.png"
+
+                ],
+
+                index: 0
+            },
+
+            steel: {
+
+                imageElement:
+                    document.getElementById("steelRotator"),
+
+                images: [
+
+                    "images/themes/steel/steel-1.png",
+                    "images/themes/steel/steel-2.png",
+                    "images/themes/steel/steel-3.png",
+                    "images/themes/steel/steel-4.png",
+                    "images/themes/steel/steel-5.png",
+                    "images/themes/steel/steel-6.png",
+                    "images/themes/steel/steel-7.png",
+                    "images/themes/steel/steel-8.png"
+
+                ],
+
+                index: 0
+            },
+
+            patriotic: {
+
+                imageElement:
+                    document.getElementById("patrioticRotator"),
+
+                images: [
+
+                    "images/themes/patriotic/patriotic-1.png",
+                    "images/themes/patriotic/patriotic-2.png",
+                    "images/themes/patriotic/patriotic-3.png",
+                    "images/themes/patriotic/patriotic-4.png",
+                    "images/themes/patriotic/patriotic-5.png"
+
+                ],
+
+                index: 0
+            }
+        };
+
+        function updateDots(themeName, activeIndex) {
+
+            const dots = document.querySelectorAll(
+                `.circle-rotator[data-theme="${themeName}"] span`
+            );
+
+            dots.forEach((dot, index) => {
+
+                if (index === activeIndex) {
+                    dot.classList.add("active");
+                }
+
+                else {
+                    dot.classList.remove("active");
+                }
+
+            });
+        }
+
+        function rotateTheme(themeName) {
+
+            const rotator = themeRotators[themeName];
+
+            rotator.index++;
+
+            if (rotator.index >= rotator.images.length) {
+                rotator.index = 0;
+            }
+
+            rotator.imageElement.style.opacity = 0;
+
+            setTimeout(() => {
+
+                rotator.imageElement.src =
+                    rotator.images[rotator.index];
+
+                rotator.imageElement.style.opacity = 1;
+
+                updateDots(themeName, rotator.index);
+
+            }, 400);
+        }
+
+        setInterval(() => {
+
+            rotateTheme("camo");
+            rotateTheme("steel");
+            rotateTheme("patriotic");
+
+        }, 10000);
+
+    </script>
+
+</body>
+</html>
