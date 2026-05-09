@@ -60,7 +60,8 @@
             gap: 32px;
         }
 
-        .top-nav a {
+        .top-nav a,
+        .category-bar a {
             color: var(--logo-gold);
             text-decoration: none;
             text-transform: uppercase;
@@ -70,7 +71,8 @@
             transition: 0.3s ease;
         }
 
-        .top-nav a:hover {
+        .top-nav a:hover,
+        .category-bar a:hover {
             color: var(--logo-gold-hover);
         }
 
@@ -85,26 +87,13 @@
         }
 
         .category-bar a {
-            color: var(--logo-gold);
-            text-decoration: none;
-            text-transform: uppercase;
             font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            transition: 0.3s ease;
-        }
-
-        .category-bar a:hover {
-            color: var(--logo-gold-hover);
         }
 
         .hero {
             min-height: 100vh;
             background:
-                linear-gradient(
-                    rgba(0, 0, 0, 0.45),
-                    rgba(0, 0, 0, 0.65)
-                ),
+                linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.65)),
                 url("brand/hero-image.png");
             background-size: cover;
             background-position: center center;
@@ -170,23 +159,29 @@
             margin-bottom: 50px;
         }
 
-        .products {
+        .products,
+        .themes {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 30px;
         }
 
-        .product-card {
+        .product-card,
+        .theme-card {
             background: rgba(18, 18, 18, 0.92);
             border: 1px solid rgba(200, 169, 91, 0.25);
             border-radius: 18px;
-            padding: 25px;
-            text-align: center;
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.55);
             transition: 0.3s;
         }
 
-        .product-card:hover {
+        .product-card {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .product-card:hover,
+        .theme-card:hover {
             transform: translateY(-5px);
             border-color: rgba(200, 169, 91, 0.55);
         }
@@ -205,13 +200,15 @@
             font-weight: bold;
         }
 
-        .product-card h3 {
+        .product-card h3,
+        .theme-content h3 {
             color: var(--logo-gold);
             margin-bottom: 12px;
             text-transform: uppercase;
         }
 
-        .product-card p {
+        .product-card p,
+        .theme-content p {
             color: #ccc;
             font-size: 15px;
             line-height: 1.6;
@@ -236,23 +233,8 @@
             color: #000;
         }
 
-        .themes {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
         .theme-card {
-            background: rgba(12, 12, 12, 0.92);
-            border: 1px solid rgba(200, 169, 91, 0.25);
-            border-radius: 20px;
             overflow: hidden;
-            transition: 0.3s;
-        }
-
-        .theme-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(200, 169, 91, 0.55);
         }
 
         .theme-display {
@@ -273,23 +255,11 @@
             padding: 25px;
         }
 
-        .theme-content h3 {
-            color: var(--logo-gold);
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-
-        .theme-content p {
-            color: #ccc;
-            line-height: 1.6;
-            font-size: 15px;
-            margin-bottom: 20px;
-        }
-
         .circle-rotator {
             display: flex;
             gap: 10px;
             margin-top: 15px;
+            flex-wrap: wrap;
         }
 
         .circle-rotator span {
@@ -313,6 +283,7 @@
             border-top: 1px solid rgba(200, 169, 91, 0.25);
             color: #aaa;
             font-size: 14px;
+            line-height: 1.8;
         }
 
         @media(max-width: 900px) {
@@ -363,21 +334,14 @@
 <body>
 
     <header class="site-header">
-
         <div class="header-top">
-
-            <img
-                src="brand/Logo.png"
-                alt="Feathered Bullet Logo"
-                class="logo"
-            >
+            <img src="brand/Logo.png" alt="Feathered Bullet Logo" class="logo">
 
             <nav class="top-nav">
                 <a href="#products">Products</a>
                 <a href="#themes">Themes</a>
                 <a href="#shop">Shopify Ready</a>
             </nav>
-
         </div>
 
         <nav class="category-bar">
@@ -387,222 +351,116 @@
             <a href="#">Accessories</a>
             <a href="#">Charms</a>
         </nav>
-
     </header>
 
     <section class="hero">
-
         <div class="hero-content">
-
             <h1>By Hunters For Hunters</h1>
 
             <p>
-               FOC matters. Better front-of-center balance means improved flight, stability, and penetration downrange.
-At Feathered Bullet, our wraps are engineered to be thinner, lighter, and stronger — giving you the durability you need without compromising arrow performance.
-Cleaner flight. Stronger impact. Better performance.
-Look good. Feel good. Shoot better with Feathered Bullet.
+                FOC matters. Better front-of-center balance means improved flight,
+                stability, and penetration downrange. At Feathered Bullet, our wraps
+                are engineered to be thinner, lighter, and stronger — giving you the
+                durability you need without compromising arrow performance. Cleaner
+                flight. Stronger impact. Better performance. Look good. Feel good.
+                Shoot better with Feathered Bullet.
             </p>
 
-            <a href="#products" class="btn">
-                View Products
-            </a>
-
+            <a href="#products" class="btn">View Products</a>
         </div>
-
     </section>
 
     <section id="products">
-
-        <h2 class="section-title">
-            Customers Favorites
-        </h2>
+        <h2 class="section-title">Customers Favorites</h2>
 
         <div class="products">
-
             <div class="product-card">
-
-                <div class="product-image">
-                    Arrow Product Image
-                </div>
-
+                <div class="product-image">Honeycomb Product Image</div>
                 <h3>Honeycomb Series</h3>
-
-                <p>
-                    Durable, lightweight arrows designed for accuracy,
-                    strength, and field-ready performance.
-                </p>
-
-                <a href="#" class="shopify-btn">
-                    Shop Soon
-                </a>
-
+                <p>Durable, lightweight wraps designed for strength, style, and field-ready performance.</p>
+                <a href="#" class="shopify-btn">Shop Soon</a>
             </div>
 
             <div class="product-card">
-
-                <div class="product-image">
-                    Attachment Image
-                </div>
-
+                <div class="product-image">Topographic Product Image</div>
                 <h3>Topographic Series</h3>
-
-                <p>
-                    Field-ready attachments and accessories built
-                    to customize your arrow setup.
-                </p>
-
-                <a href="#" class="shopify-btn">
-                    Shop Soon
-                </a>
-
+                <p>Outdoor-inspired designs built to customize your arrow setup with clean field styling.</p>
+                <a href="#" class="shopify-btn">Shop Soon</a>
             </div>
 
             <div class="product-card">
-
-                <div class="product-image">
-                    Vinyl Skin Image
-                </div>
-
+                <div class="product-image">Graffiti Product Image</div>
                 <h3>Graffiti Series</h3>
-
-                <p>
-                    Custom vinyl wraps with tactical, camo,
-                    steel, and patriotic design options.
-                </p>
-
-                <a href="#" class="shopify-btn">
-                    Shop Soon
-                </a>
-
+                <p>Bold custom wraps with street-inspired detail, attitude, and performance-focused styling.</p>
+                <a href="#" class="shopify-btn">Shop Soon</a>
             </div>
-
         </div>
-
     </section>
 
     <section id="themes">
-
-        <h2 class="section-title">
-            Style Themes
-        </h2>
+        <h2 class="section-title">Style Themes</h2>
 
         <div class="themes">
 
             <div class="theme-card">
-
                 <div class="theme-display">
-
-                    <img
-                        id="camoRotator"
-                        src="Camo/Camo-1.png"
-                        alt="Camo Series"
-                    >
-
+                    <img id="honeycombRotator" src="Honeycomb/Honeycomb-1.png" alt="Honeycomb Series">
                 </div>
 
                 <div class="theme-content">
+                    <h3>Honeycomb Series</h3>
+                    <p>Lightweight, durable honeycomb styles built for sharp detail and field-ready performance.</p>
 
-                    <h3>Camo Series</h3>
-
-                    <p>
-                        Hunter-focused camouflage styles for arrows,
-                        wraps, and accessories.
-                    </p>
-
-                    <div class="circle-rotator" data-theme="camo">
+                    <div class="circle-rotator" data-theme="honeycomb">
                         <span class="active"></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span>
                         <span></span>
                     </div>
-
                 </div>
-
             </div>
 
             <div class="theme-card">
-
                 <div class="theme-display">
-
-                    <img
-                        id="steelRotator"
-                        src="Steel/steel-1.png"
-                        alt="Steel Series"
-                    >
-
+                    <img id="topographicRotator" src="Topographic/Topographic-1.png" alt="Topographic Series">
                 </div>
 
                 <div class="theme-content">
+                    <h3>Topographic Series</h3>
+                    <p>Outdoor-inspired topographic patterns designed for hunters, archers, and rugged setups.</p>
 
-                    <h3>Steel Series</h3>
-
-                    <p>
-                        Industrial brushed metal themes with tactical,
-                        rugged styling.
-                    </p>
-
-                    <div class="circle-rotator" data-theme="steel">
+                    <div class="circle-rotator" data-theme="topographic">
                         <span class="active"></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <span></span><span></span><span></span><span></span><span></span>
                     </div>
-
                 </div>
-
             </div>
 
             <div class="theme-card">
-
                 <div class="theme-display">
-
-                    <img
-                        id="patrioticRotator"
-                        src="patriotic/patriotic-1.png"
-                        alt="Patriotic Series"
-                    >
-
+                    <img id="graffitiRotator" src="Graffiti/Graffiti-1.png" alt="Graffiti Series">
                 </div>
 
                 <div class="theme-content">
+                    <h3>Graffiti Series</h3>
+                    <p>Bold graffiti-inspired wraps for archers who want aggressive style and clean performance.</p>
 
-                    <h3>Patriotic Series</h3>
-
-                    <p>
-                        American-inspired tactical themes with bold
-                        red, white, blue, black, and gold accents.
-                    </p>
-
-                    <div class="circle-rotator" data-theme="patriotic">
+                    <div class="circle-rotator" data-theme="graffiti">
                         <span class="active"></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span>
                     </div>
-
                 </div>
-
             </div>
 
         </div>
-
     </section>
 
     <section id="shop">
-
-        <h2 class="section-title">
-            Shopify Integration Ready
-        </h2>
+        <h2 class="section-title">Shopify Integration Ready</h2>
 
         <div class="product-card">
-
             <h3>Future Shopify Setup</h3>
 
             <p>
@@ -611,62 +469,65 @@ Look good. Feel good. Shoot better with Feathered Bullet.
                 embedded products, or direct checkout links.
             </p>
 
-            <a href="#" class="btn">
-                Coming Soon
-            </a>
-
+            <a href="#" class="btn">Coming Soon</a>
         </div>
-
     </section>
 
     <footer class="footer">
-        © 2026 Feathered Bullet.
-        Built for hunters, archers, and outdoor performance.
-
-        Join our email list
-        Apply to be a Feathered Bullet Brand Ambassador!
-
+        © 2026 Feathered Bullet.<br>
+        Built for hunters, archers, and outdoor performance.<br><br>
+        Join our email list<br>
+        Apply to be a Feathered Bullet Brand Ambassador!<br><br>
         FeatheredBulletLLC@gmail.com
     </footer>
 
     <script>
         const themeRotators = {
-            camo: {
-                imageElement: document.getElementById("camoRotator"),
+            honeycomb: {
+                imageElement: document.getElementById("honeycombRotator"),
                 images: [
-                    "Camo/Camo-1.png",
-                    "Camo/Camo-2.png",
-                    "Camo/Camo-3.png",
-                    "Camo/Camo-4.png",
-                    "Camo/Camo-5.png",
-                    "Camo/Camo-6.png"
+                    "Honeycomb/Honeycomb-1.png",
+                    "Honeycomb/Honeycomb-2.png",
+                    "Honeycomb/Honeycomb-3.png",
+                    "Honeycomb/Honeycomb-4.png",
+                    "Honeycomb/Honeycomb-5.png",
+                    "Honeycomb/Honeycomb-6.png",
+                    "Honeycomb/Honeycomb-7.png",
+                    "Honeycomb/Honeycomb-8.png",
+                    "Honeycomb/Honeycomb-9.png",
+                    "Honeycomb/Honeycomb-10.png",
+                    "Honeycomb/Honeycomb-11.png",
+                    "Honeycomb/Honeycomb-12.png",
+                    "Honeycomb/Honeycomb-13.png",
+                    "Honeycomb/Honeycomb-14.png"
                 ],
                 index: 0
             },
 
-            steel: {
-                imageElement: document.getElementById("steelRotator"),
+            topographic: {
+                imageElement: document.getElementById("topographicRotator"),
                 images: [
-                    "Steel/steel-1.png",
-                    "Steel/steel-2.png",
-                    "Steel/steel-3.png",
-                    "Steel/steel-4.png",
-                    "Steel/steel-5.png",
-                    "Steel/steel-6.png",
-                    "Steel/steel-7.png",
-                    "Steel/steel-8.png"
+                    "Topographic/Topographic-1.png",
+                    "Topographic/Topographic-2.png",
+                    "Topographic/Topographic-3.png",
+                    "Topographic/Topographic-4.png",
+                    "Topographic/Topographic-5.png",
+                    "Topographic/Topographic-6.png"
                 ],
                 index: 0
             },
 
-            patriotic: {
-                imageElement: document.getElementById("patrioticRotator"),
+            graffiti: {
+                imageElement: document.getElementById("graffitiRotator"),
                 images: [
-                    "patriotic/patriotic-1.png",
-                    "patriotic/patriotic-2.png",
-                    "patriotic/patriotic-3.png",
-                    "patriotic/patriotic-4.png",
-                    "patriotic/patriotic-5.png"
+                    "Graffiti/Graffiti-1.png",
+                    "Graffiti/Graffiti-2.png",
+                    "Graffiti/Graffiti-3.png",
+                    "Graffiti/Graffiti-4.png",
+                    "Graffiti/Graffiti-5.png",
+                    "Graffiti/Graffiti-6.png",
+                    "Graffiti/Graffiti-7.png",
+                    "Graffiti/Graffiti-8.png"
                 ],
                 index: 0
             }
@@ -685,6 +546,10 @@ Look good. Feel good. Shoot better with Feathered Bullet.
         function rotateTheme(themeName) {
             const rotator = themeRotators[themeName];
 
+            if (!rotator || !rotator.imageElement) {
+                return;
+            }
+
             rotator.index++;
 
             if (rotator.index >= rotator.images.length) {
@@ -701,9 +566,9 @@ Look good. Feel good. Shoot better with Feathered Bullet.
         }
 
         setInterval(() => {
-            rotateTheme("camo");
-            rotateTheme("steel");
-            rotateTheme("patriotic");
+            rotateTheme("honeycomb");
+            rotateTheme("topographic");
+            rotateTheme("graffiti");
         }, 10000);
     </script>
 
