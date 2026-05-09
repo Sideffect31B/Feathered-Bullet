@@ -1,323 +1,576 @@
-<style>
-    :root {
-        --logo-gold: #C8A95B;
-        --logo-gold-hover: #E0BE6B;
-        --black: #050505;
-    }
+<!DOCTYPE html>
+<html lang="en">
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feathered Bullet</title>
 
-    html {
-        scroll-behavior: smooth;
-    }
+    <style>
+        :root {
+            --logo-gold: #C8A95B;
+            --logo-gold-hover: #E0BE6B;
+            --black: #050505;
+        }
 
-    body {
-        font-family: Arial, sans-serif;
-        background: var(--black);
-        color: #fff;
-        overflow-x: hidden;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .site-header {
-        width: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 1000;
-        background: rgba(0, 0, 0, 0.96);
-        border-bottom: 1px solid rgba(200, 169, 91, 0.25);
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    .header-top {
-        height: 90px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 40px;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--black);
+            color: #fff;
+            overflow-x: hidden;
+        }
 
-    .logo {
-        width: 200px;
-        height: auto;
-        display: block;
-    }
+        .site-header {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.96);
+            border-bottom: 1px solid rgba(200, 169, 91, 0.25);
+        }
 
-    .top-nav {
-        display: flex;
-        align-items: center;
-        gap: 32px;
-    }
-
-    .top-nav a,
-    .category-bar a {
-        color: var(--logo-gold);
-        text-decoration: none;
-        text-transform: uppercase;
-        font-size: 14px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        transition: 0.3s ease;
-    }
-
-    .top-nav a:hover,
-    .category-bar a:hover {
-        color: var(--logo-gold-hover);
-    }
-
-    .category-bar {
-        height: 48px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 42px;
-        background: rgba(0, 0, 0, 0.98);
-        border-top: 1px solid rgba(200, 169, 91, 0.15);
-    }
-
-    .category-bar a {
-        font-size: 13px;
-    }
-
-    .hero {
-        min-height: 100vh;
-        background:
-            linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.65)),
-            url("brand/hero-image.png");
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        display: flex;
-        align-items: center;
-        padding: 165px 60px 40px;
-    }
-
-    .hero-content {
-        max-width: 760px;
-        background: rgba(0, 0, 0, 0.72);
-        border: 1px solid rgba(200, 169, 91, 0.25);
-        border-radius: 20px;
-        padding: 45px;
-        box-shadow: 0 0 40px rgba(0, 0, 0, 0.65);
-    }
-
-    .hero-content h1 {
-        font-size: 72px;
-        line-height: 1;
-        margin-bottom: 24px;
-        color: var(--logo-gold);
-        text-transform: uppercase;
-        letter-spacing: 3px;
-    }
-
-    .hero-content p {
-        font-size: 21px;
-        line-height: 1.7;
-        color: #ddd;
-        max-width: 650px;
-        margin-bottom: 35px;
-    }
-
-    .btn {
-        display: inline-block;
-        background: var(--logo-gold);
-        color: #000;
-        padding: 16px 34px;
-        border-radius: 6px;
-        text-decoration: none;
-        font-weight: 700;
-        text-transform: uppercase;
-        transition: 0.3s;
-    }
-
-    .btn:hover {
-        background: var(--logo-gold-hover);
-        transform: translateY(-2px);
-    }
-
-    section {
-        padding: 80px 60px;
-    }
-
-    .section-title {
-        text-align: center;
-        color: var(--logo-gold);
-        font-size: 36px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-bottom: 50px;
-    }
-
-    .products,
-    .themes {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 30px;
-    }
-
-    .product-card,
-    .theme-card {
-        background: rgba(18, 18, 18, 0.92);
-        border: 1px solid rgba(200, 169, 91, 0.25);
-        border-radius: 18px;
-        box-shadow: 0 0 25px rgba(0, 0, 0, 0.55);
-        transition: 0.3s;
-    }
-
-    .product-card {
-        padding: 25px;
-        text-align: center;
-    }
-
-    .product-card:hover,
-    .theme-card:hover {
-        transform: translateY(-5px);
-        border-color: rgba(200, 169, 91, 0.55);
-    }
-
-    .product-image {
-        height: 190px;
-        background: linear-gradient(135deg, #222, #111);
-        border-radius: 14px;
-        border: 1px solid rgba(200, 169, 91, 0.25);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #777;
-        margin-bottom: 20px;
-        text-transform: uppercase;
-        font-weight: bold;
-    }
-
-    .product-card h3,
-    .theme-content h3 {
-        color: var(--logo-gold);
-        margin-bottom: 12px;
-        text-transform: uppercase;
-    }
-
-    .product-card p,
-    .theme-content p {
-        color: #ccc;
-        font-size: 15px;
-        line-height: 1.6;
-        margin-bottom: 20px;
-    }
-
-    .shopify-btn {
-        border: 1px solid var(--logo-gold);
-        color: var(--logo-gold);
-        padding: 11px 22px;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-size: 13px;
-        font-weight: bold;
-        border-radius: 4px;
-        display: inline-block;
-        transition: 0.3s;
-    }
-
-    .shopify-btn:hover {
-        background: var(--logo-gold);
-        color: #000;
-    }
-
-    .theme-card {
-        overflow: hidden;
-    }
-
-    .theme-display {
-        height: 230px;
-        background: #111;
-        overflow: hidden;
-    }
-
-    .theme-display img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transition: opacity 0.6s ease-in-out;
-    }
-
-    .theme-content {
-        padding: 25px;
-    }
-
-    .circle-rotator {
-        display: flex;
-        gap: 10px;
-        margin-top: 15px;
-        flex-wrap: wrap;
-    }
-
-    .circle-rotator span {
-        width: 15px;
-        height: 15px;
-        border-radius: 50%;
-        border: 1px solid var(--logo-gold);
-        background: #222;
-        display: inline-block;
-    }
-
-    .circle-rotator span.active {
-        background: var(--logo-gold);
-        box-shadow: 0 0 12px var(--logo-gold);
-    }
-
-    .footer {
-        text-align: center;
-        padding: 35px;
-        background: var(--black);
-        border-top: 1px solid rgba(200, 169, 91, 0.25);
-        color: #aaa;
-        font-size: 14px;
-        line-height: 1.8;
-    }
-
-    @media(max-width: 900px) {
         .header-top {
-            height: 78px;
-            padding: 0 25px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
         }
 
         .logo {
-            width: 150px;
+            width: 200px;
+            height: auto;
+            display: block;
         }
 
         .top-nav {
-            display: none;
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .top-nav a,
+        .category-bar a {
+            color: var(--logo-gold);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: 0.3s ease;
+        }
+
+        .top-nav a:hover,
+        .category-bar a:hover {
+            color: var(--logo-gold-hover);
         }
 
         .category-bar {
-            height: 44px;
-            justify-content: flex-start;
-            gap: 24px;
-            overflow-x: auto;
-            padding: 0 25px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 42px;
+            background: rgba(0, 0, 0, 0.98);
+            border-top: 1px solid rgba(200, 169, 91, 0.15);
+        }
+
+        .category-bar a {
+            font-size: 13px;
         }
 
         .hero {
-            padding: 150px 25px 40px;
+            min-height: 100vh;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.65)),
+                url("brand/hero-image.png");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            padding: 165px 60px 40px;
         }
 
         .hero-content {
-            padding: 30px;
+            max-width: 760px;
+            background: rgba(0, 0, 0, 0.72);
+            border: 1px solid rgba(200, 169, 91, 0.25);
+            border-radius: 20px;
+            padding: 45px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.65);
         }
 
         .hero-content h1 {
-            font-size: 46px;
+            font-size: 72px;
+            line-height: 1;
+            margin-bottom: 24px;
+            color: var(--logo-gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
 
         .hero-content p {
-            font-size: 18px;
+            font-size: 21px;
+            line-height: 1.7;
+            color: #ddd;
+            max-width: 650px;
+            margin-bottom: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--logo-gold);
+            color: #000;
+            padding: 16px 34px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--logo-gold-hover);
+            transform: translateY(-2px);
         }
 
         section {
-            padding: 60px 25px;
+            padding: 80px 60px;
         }
-    }
-</style>
+
+        .section-title {
+            text-align: center;
+            color: var(--logo-gold);
+            font-size: 36px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+        }
+
+        .products,
+        .themes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card,
+        .theme-card {
+            background: rgba(18, 18, 18, 0.92);
+            border: 1px solid rgba(200, 169, 91, 0.25);
+            border-radius: 18px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.55);
+            transition: 0.3s;
+        }
+
+        .product-card {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .product-card:hover,
+        .theme-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(200, 169, 91, 0.55);
+        }
+
+        .product-image {
+            height: 190px;
+            background: linear-gradient(135deg, #222, #111);
+            border-radius: 14px;
+            border: 1px solid rgba(200, 169, 91, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .product-card h3,
+        .theme-content h3 {
+            color: var(--logo-gold);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .product-card p,
+        .theme-content p {
+            color: #ccc;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .shopify-btn {
+            border: 1px solid var(--logo-gold);
+            color: var(--logo-gold);
+            padding: 11px 22px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 13px;
+            font-weight: bold;
+            border-radius: 4px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .shopify-btn:hover {
+            background: var(--logo-gold);
+            color: #000;
+        }
+
+        .theme-card {
+            overflow: hidden;
+        }
+
+        .theme-display {
+            height: 230px;
+            background: #111;
+            overflow: hidden;
+        }
+
+        .theme-display img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        .theme-content {
+            padding: 25px;
+        }
+
+        .circle-rotator {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .circle-rotator span {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            border: 1px solid var(--logo-gold);
+            background: #222;
+            display: inline-block;
+        }
+
+        .circle-rotator span.active {
+            background: var(--logo-gold);
+            box-shadow: 0 0 12px var(--logo-gold);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 35px;
+            background: var(--black);
+            border-top: 1px solid rgba(200, 169, 91, 0.25);
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        @media(max-width: 900px) {
+            .header-top {
+                height: 78px;
+                padding: 0 25px;
+            }
+
+            .logo {
+                width: 150px;
+            }
+
+            .top-nav {
+                display: none;
+            }
+
+            .category-bar {
+                height: 44px;
+                justify-content: flex-start;
+                gap: 24px;
+                overflow-x: auto;
+                padding: 0 25px;
+            }
+
+            .hero {
+                padding: 150px 25px 40px;
+            }
+
+            .hero-content {
+                padding: 30px;
+            }
+
+            .hero-content h1 {
+                font-size: 46px;
+            }
+
+            .hero-content p {
+                font-size: 18px;
+            }
+
+            section {
+                padding: 60px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="header-top">
+            <img src="brand/Logo.png" alt="Feathered Bullet Logo" class="logo">
+
+            <nav class="top-nav">
+                <a href="#products">Products</a>
+                <a href="#themes">Themes</a>
+                <a href="#shop">Shopify Ready</a>
+            </nav>
+        </div>
+
+        <nav class="category-bar">
+            <a href="#">Bows</a>
+            <a href="#">Arrows</a>
+            <a href="#">Skins</a>
+            <a href="#">Accessories</a>
+            <a href="#">Charms</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>By Hunters For Hunters</h1>
+
+            <p>
+                FOC matters. Better front-of-center balance means improved flight,
+                stability, and penetration downrange. At Feathered Bullet, our wraps
+                are engineered to be thinner, lighter, and stronger — giving you the
+                durability you need without compromising arrow performance. Cleaner
+                flight. Stronger impact. Better performance. Look good. Feel good.
+                Shoot better with Feathered Bullet.
+            </p>
+
+            <a href="#products" class="btn">View Products</a>
+        </div>
+    </section>
+
+    <section id="products">
+        <h2 class="section-title">Customers Favorites</h2>
+
+        <div class="products">
+            <div class="product-card">
+                <div class="product-image">Honeycomb Product Image</div>
+                <h3>Honeycomb Series</h3>
+                <p>Durable, lightweight wraps designed for strength, style, and field-ready performance.</p>
+                <a href="#" class="shopify-btn">Shop Soon</a>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">Topographic Product Image</div>
+                <h3>Topographic Series</h3>
+                <p>Outdoor-inspired designs built to customize your arrow setup with clean field styling.</p>
+                <a href="#" class="shopify-btn">Shop Soon</a>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">Graffiti Product Image</div>
+                <h3>Graffiti Series</h3>
+                <p>Bold custom wraps with street-inspired detail, attitude, and performance-focused styling.</p>
+                <a href="#" class="shopify-btn">Shop Soon</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="themes">
+        <h2 class="section-title">Style Themes</h2>
+
+        <div class="themes">
+
+            <div class="theme-card">
+                <div class="theme-display">
+                    <img id="honeycombRotator" src="Honeycomb/Honeycomb-1.png" alt="Honeycomb Series">
+                </div>
+
+                <div class="theme-content">
+                    <h3>Honeycomb Series</h3>
+                    <p>Lightweight, durable honeycomb styles built for sharp detail and field-ready performance.</p>
+
+                    <div class="circle-rotator" data-theme="honeycomb">
+                        <span class="active"></span>
+                        <span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span><span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="theme-card">
+                <div class="theme-display">
+                    <img id="topographicRotator" src="Topographic/Topographic-1.png" alt="Topographic Series">
+                </div>
+
+                <div class="theme-content">
+                    <h3>Topographic Series</h3>
+                    <p>Outdoor-inspired topographic patterns designed for hunters, archers, and rugged setups.</p>
+
+                    <div class="circle-rotator" data-theme="topographic">
+                        <span class="active"></span>
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="theme-card">
+                <div class="theme-display">
+                    <img id="graffitiRotator" src="Graffiti/Graffiti-1.png" alt="Graffiti Series">
+                </div>
+
+                <div class="theme-content">
+                    <h3>Graffiti Series</h3>
+                    <p>Bold graffiti-inspired wraps for archers who want aggressive style and clean performance.</p>
+
+                    <div class="circle-rotator" data-theme="graffiti">
+                        <span class="active"></span>
+                        <span></span><span></span><span></span><span></span>
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="shop">
+        <h2 class="section-title">Shopify Integration Ready</h2>
+
+        <div class="product-card">
+            <h3>Future Shopify Setup</h3>
+
+            <p>
+                Product buttons are currently placeholders.
+                These can later be replaced with Shopify Buy Buttons,
+                embedded products, or direct checkout links.
+            </p>
+
+            <a href="#" class="btn">Coming Soon</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        © 2026 Feathered Bullet.<br>
+        Built for hunters, archers, and outdoor performance.<br><br>
+        Join our email list<br>
+        Apply to be a Feathered Bullet Brand Ambassador!<br><br>
+        FeatheredBulletLLC@gmail.com
+    </footer>
+
+    <script>
+        const themeRotators = {
+            honeycomb: {
+                imageElement: document.getElementById("honeycombRotator"),
+                images: [
+                    "Honeycomb/Honeycomb-1.png",
+                    "Honeycomb/Honeycomb-2.png",
+                    "Honeycomb/Honeycomb-3.png",
+                    "Honeycomb/Honeycomb-4.png",
+                    "Honeycomb/Honeycomb-5.png",
+                    "Honeycomb/Honeycomb-6.png",
+                    "Honeycomb/Honeycomb-7.png",
+                    "Honeycomb/Honeycomb-8.png",
+                    "Honeycomb/Honeycomb-9.png",
+                    "Honeycomb/Honeycomb-10.png",
+                    "Honeycomb/Honeycomb-11.png",
+                    "Honeycomb/Honeycomb-12.png",
+                    "Honeycomb/Honeycomb-13.png",
+                    "Honeycomb/Honeycomb-14.png"
+                ],
+                index: 0
+            },
+
+            topographic: {
+                imageElement: document.getElementById("topographicRotator"),
+                images: [
+                    "Topographic/Topographic-1.png",
+                    "Topographic/Topographic-2.png",
+                    "Topographic/Topographic-3.png",
+                    "Topographic/Topographic-4.png",
+                    "Topographic/Topographic-5.png",
+                    "Topographic/Topographic-6.png"
+                ],
+                index: 0
+            },
+
+            graffiti: {
+                imageElement: document.getElementById("graffitiRotator"),
+                images: [
+                    "Graffiti/Graffiti-1.png",
+                    "Graffiti/Graffiti-2.png",
+                    "Graffiti/Graffiti-3.png",
+                    "Graffiti/Graffiti-4.png",
+                    "Graffiti/Graffiti-5.png",
+                    "Graffiti/Graffiti-6.png",
+                    "Graffiti/Graffiti-7.png",
+                    "Graffiti/Graffiti-8.png"
+                ],
+                index: 0
+            }
+        };
+
+        function updateDots(themeName, activeIndex) {
+            const dots = document.querySelectorAll(
+                `.circle-rotator[data-theme="${themeName}"] span`
+            );
+
+            dots.forEach((dot, index) => {
+                dot.classList.toggle("active", index === activeIndex);
+            });
+        }
+
+        function rotateTheme(themeName) {
+            const rotator = themeRotators[themeName];
+
+            if (!rotator || !rotator.imageElement) {
+                return;
+            }
+
+            rotator.index++;
+
+            if (rotator.index >= rotator.images.length) {
+                rotator.index = 0;
+            }
+
+            rotator.imageElement.style.opacity = 0;
+
+            setTimeout(() => {
+                rotator.imageElement.src = rotator.images[rotator.index];
+                rotator.imageElement.style.opacity = 1;
+                updateDots(themeName, rotator.index);
+            }, 400);
+        }
+
+        setInterval(() => {
+            rotateTheme("honeycomb");
+            rotateTheme("topographic");
+            rotateTheme("graffiti");
+        }, 10000);
+    </script>
+
+</body>
+</html>
