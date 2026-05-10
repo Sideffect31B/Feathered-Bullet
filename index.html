@@ -195,7 +195,8 @@
             margin-bottom: 20px;
         }
 
-        .product-image img {
+        .product-image img,
+        .theme-display img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -246,10 +247,6 @@
         }
 
         .theme-display img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
             transition: opacity 0.6s ease-in-out;
         }
 
@@ -379,24 +376,6 @@
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="Honeycomb/Honeycomb-1.png" alt="Honeycomb Series">
-                </div>
-                <h3>Honeycomb Series</h3>
-                <p>Durable, lightweight wraps designed for strength, style, and field-ready performance.</p>
-                <a href="#" class="shopify-btn">Shop Soon</a>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="topographic/Topographic-1.png" alt="Topographic Series">
-                </div>
-                <h3>Topographic Series</h3>
-                <p>Outdoor-inspired designs built to customize your arrow setup with clean field styling.</p>
-                <a href="#" class="shopify-btn">Shop Soon</a>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image">
                     <img src="Graffiti/Graffiti-1.png" alt="Graffiti Series">
                 </div>
                 <h3>Graffiti Series</h3>
@@ -406,28 +385,19 @@
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="Patriotic/Patriotic-1.png" alt="Patriotic Series">
+                    <img src="Camo/Camo-1.png" alt="Camo Series">
                 </div>
-                <h3>Patriotic Series</h3>
-                <p>American-inspired tactical wraps with bold patriotic styling and rugged field presence.</p>
-                <a href="#" class="shopify-btn">Shop Soon</a>
-            </div>
-
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="Camouflage/Camouflage-1.png" alt="Camouflage Series">
-                </div>
-                <h3>Camouflage Series</h3>
+                <h3>Camo Series</h3>
                 <p>Hunter-focused camouflage wraps made for outdoor setups, concealment, and tactical style.</p>
                 <a href="#" class="shopify-btn">Shop Soon</a>
             </div>
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="Steel/Steel-1.png" alt="Steel Series">
+                    <img src="Honeycomb/Honeycomb-1.png" alt="Honeycomb Series">
                 </div>
-                <h3>Steel Series</h3>
-                <p>Industrial brushed metal designs built for a clean, aggressive, and premium arrow setup.</p>
+                <h3>Honeycomb Series</h3>
+                <p>Durable, lightweight wraps designed for strength, style, and field-ready performance.</p>
                 <a href="#" class="shopify-btn">Shop Soon</a>
             </div>
 
@@ -441,19 +411,33 @@
 
             <div class="theme-card">
                 <div class="theme-display">
-                    <img id="honeycombRotator" src="Honeycomb/Honeycomb-1.png" alt="Honeycomb Series">
+                    <img id="patrioticRotator" src="patriotic/patriotic-1.png" alt="Patriotic Series">
                 </div>
 
                 <div class="theme-content">
-                    <h3>Honeycomb Series</h3>
-                    <p>Lightweight, durable honeycomb styles built for sharp detail and field-ready performance.</p>
+                    <h3>Patriotic Series</h3>
+                    <p>American-inspired tactical themes with bold red, white, blue, black, and gold accents.</p>
 
-                    <div class="circle-rotator" data-theme="honeycomb">
+                    <div class="circle-rotator" data-theme="patriotic">
                         <span class="active"></span>
                         <span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="theme-card">
+                <div class="theme-display">
+                    <img id="steelRotator" src="Steel/steel-1.png" alt="Steel Series">
+                </div>
+
+                <div class="theme-content">
+                    <h3>Steel Series</h3>
+                    <p>Industrial brushed metal themes with tactical, rugged, and premium styling.</p>
+
+                    <div class="circle-rotator" data-theme="steel">
+                        <span class="active"></span>
                         <span></span><span></span><span></span><span></span>
-                        <span></span><span></span><span></span><span></span>
-                        <span></span>
+                        <span></span><span></span><span></span>
                     </div>
                 </div>
             </div>
@@ -470,72 +454,6 @@
                     <div class="circle-rotator" data-theme="topographic">
                         <span class="active"></span>
                         <span></span><span></span><span></span><span></span><span></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="theme-card">
-                <div class="theme-display">
-                    <img id="graffitiRotator" src="Graffiti/Graffiti-1.png" alt="Graffiti Series">
-                </div>
-
-                <div class="theme-content">
-                    <h3>Graffiti Series</h3>
-                    <p>Bold graffiti-inspired wraps for archers who want aggressive style and clean performance.</p>
-
-                    <div class="circle-rotator" data-theme="graffiti">
-                        <span class="active"></span>
-                        <span></span><span></span><span></span><span></span>
-                        <span></span><span></span><span></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="theme-card">
-                <div class="theme-display">
-                    <img id="patrioticRotator" src="Patriotic/Patriotic-1.png" alt="Patriotic Series">
-                </div>
-
-                <div class="theme-content">
-                    <h3>Patriotic Series</h3>
-                    <p>American-inspired tactical themes with bold red, white, blue, black, and gold accents.</p>
-
-                    <div class="circle-rotator" data-theme="patriotic">
-                        <span class="active"></span>
-                        <span></span><span></span><span></span><span></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="theme-card">
-                <div class="theme-display">
-                    <img id="camouflageRotator" src="Camouflage/Camouflage-1.png" alt="Camouflage Series">
-                </div>
-
-                <div class="theme-content">
-                    <h3>Camouflage Series</h3>
-                    <p>Hunter-focused camouflage styles for arrows, wraps, and outdoor setups.</p>
-
-                    <div class="circle-rotator" data-theme="camouflage">
-                        <span class="active"></span>
-                        <span></span><span></span><span></span><span></span><span></span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="theme-card">
-                <div class="theme-display">
-                    <img id="steelRotator" src="Steel/Steel-1.png" alt="Steel Series">
-                </div>
-
-                <div class="theme-content">
-                    <h3>Steel Series</h3>
-                    <p>Industrial brushed metal themes with tactical, rugged, and premium styling.</p>
-
-                    <div class="circle-rotator" data-theme="steel">
-                        <span class="active"></span>
-                        <span></span><span></span><span></span><span></span>
-                        <span></span><span></span><span></span>
                     </div>
                 </div>
             </div>
@@ -569,23 +487,29 @@
 
     <script>
         const themeRotators = {
-            honeycomb: {
-                imageElement: document.getElementById("honeycombRotator"),
+            patriotic: {
+                imageElement: document.getElementById("patrioticRotator"),
                 images: [
-                    "Honeycomb/Honeycomb-1.png",
-                    "Honeycomb/Honeycomb-2.png",
-                    "Honeycomb/Honeycomb-3.png",
-                    "Honeycomb/Honeycomb-4.png",
-                    "Honeycomb/Honeycomb-5.png",
-                    "Honeycomb/Honeycomb-6.png",
-                    "Honeycomb/Honeycomb-7.png",
-                    "Honeycomb/Honeycomb-8.png",
-                    "Honeycomb/Honeycomb-9.png",
-                    "Honeycomb/Honeycomb-10.png",
-                    "Honeycomb/Honeycomb-11.png",
-                    "Honeycomb/Honeycomb-12.png",
-                    "Honeycomb/Honeycomb-13.png",
-                    "Honeycomb/Honeycomb-14.png"
+                    "patriotic/patriotic-1.png",
+                    "patriotic/patriotic-2.png",
+                    "patriotic/patriotic-3.png",
+                    "patriotic/patriotic-4.png",
+                    "patriotic/patriotic-5.png"
+                ],
+                index: 0
+            },
+
+            steel: {
+                imageElement: document.getElementById("steelRotator"),
+                images: [
+                    "Steel/steel-1.png",
+                    "Steel/steel-2.png",
+                    "Steel/steel-3.png",
+                    "Steel/steel-4.png",
+                    "Steel/steel-5.png",
+                    "Steel/steel-6.png",
+                    "Steel/steel-7.png",
+                    "Steel/steel-8.png"
                 ],
                 index: 0
             },
@@ -599,61 +523,6 @@
                     "topographic/Topographic-4.png",
                     "topographic/Topographic-5.png",
                     "topographic/Topographic-6.png"
-                ],
-                index: 0
-            },
-
-            graffiti: {
-                imageElement: document.getElementById("graffitiRotator"),
-                images: [
-                    "Graffiti/Graffiti-1.png",
-                    "Graffiti/Graffiti-2.png",
-                    "Graffiti/Graffiti-3.png",
-                    "Graffiti/Graffiti-4.png",
-                    "Graffiti/Graffiti-5.png",
-                    "Graffiti/Graffiti-6.png",
-                    "Graffiti/Graffiti-7.png",
-                    "Graffiti/Graffiti-8.png"
-                ],
-                index: 0
-            },
-
-            patriotic: {
-                imageElement: document.getElementById("patrioticRotator"),
-                images: [
-                    "Patriotic/Patriotic-1.png",
-                    "Patriotic/Patriotic-2.png",
-                    "Patriotic/Patriotic-3.png",
-                    "Patriotic/Patriotic-4.png",
-                    "Patriotic/Patriotic-5.png"
-                ],
-                index: 0
-            },
-
-            camouflage: {
-                imageElement: document.getElementById("camouflageRotator"),
-                images: [
-                    "Camouflage/Camouflage-1.png",
-                    "Camouflage/Camouflage-2.png",
-                    "Camouflage/Camouflage-3.png",
-                    "Camouflage/Camouflage-4.png",
-                    "Camouflage/Camouflage-5.png",
-                    "Camouflage/Camouflage-6.png"
-                ],
-                index: 0
-            },
-
-            steel: {
-                imageElement: document.getElementById("steelRotator"),
-                images: [
-                    "Steel/Steel-1.png",
-                    "Steel/Steel-2.png",
-                    "Steel/Steel-3.png",
-                    "Steel/Steel-4.png",
-                    "Steel/Steel-5.png",
-                    "Steel/Steel-6.png",
-                    "Steel/Steel-7.png",
-                    "Steel/Steel-8.png"
                 ],
                 index: 0
             }
@@ -692,12 +561,9 @@
         }
 
         setInterval(() => {
-            rotateTheme("honeycomb");
-            rotateTheme("topographic");
-            rotateTheme("graffiti");
             rotateTheme("patriotic");
-            rotateTheme("camouflage");
             rotateTheme("steel");
+            rotateTheme("topographic");
         }, 10000);
     </script>
 
