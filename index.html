@@ -38,6 +38,12 @@
             z-index: 1000;
             background: rgba(0, 0, 0, 0.96);
             border-bottom: 1px solid rgba(200, 169, 91, 0.25);
+            transition: 0.3s ease;
+        }
+
+        .site-header.header-scrolled {
+            background: rgba(0, 0, 0, 0.98);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.65);
         }
 
         .header-top {
@@ -173,6 +179,7 @@
             border-radius: 18px;
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.55);
             transition: 0.3s;
+            overflow: hidden;
         }
 
         .product-card {
@@ -195,12 +202,24 @@
             margin-bottom: 20px;
         }
 
+        .theme-display {
+            height: 230px;
+            background: #111;
+            overflow: hidden;
+        }
+
         .product-image img,
         .theme-display img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+        }
+
+        .product-image:hover img,
+        .theme-display:hover img {
+            transform: scale(1.05);
         }
 
         .product-card h3,
@@ -236,20 +255,6 @@
             color: #000;
         }
 
-        .theme-card {
-            overflow: hidden;
-        }
-
-        .theme-display {
-            height: 230px;
-            background: #111;
-            overflow: hidden;
-        }
-
-        .theme-display img {
-            transition: opacity 0.6s ease-in-out;
-        }
-
         .theme-content {
             padding: 25px;
         }
@@ -259,6 +264,7 @@
             gap: 10px;
             margin-top: 15px;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .circle-rotator span {
@@ -268,11 +274,24 @@
             border: 1px solid var(--logo-gold);
             background: #222;
             display: inline-block;
+            cursor: pointer;
+            transition: 0.3s ease;
         }
 
         .circle-rotator span.active {
             background: var(--logo-gold);
             box-shadow: 0 0 12px var(--logo-gold);
+        }
+
+        .reveal-hidden {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.7s ease;
+        }
+
+        .reveal-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .footer {
@@ -376,28 +395,56 @@
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="Graffiti/Graffiti-1.png" alt="Graffiti Series">
+                    <img id="graffitiFavoriteRotator" src="Graffiti/Graffiti-1.png" alt="Graffiti Series">
                 </div>
+
                 <h3>Graffiti Series</h3>
                 <p>Bold custom wraps with street-inspired detail, attitude, and performance-focused styling.</p>
+
+                <div class="circle-rotator" data-theme="graffitiFavorite">
+                    <span class="active"></span>
+                    <span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span>
+                </div>
+
+                <br>
                 <a href="#" class="shopify-btn">Shop Soon</a>
             </div>
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="Camo/Camo-1.png" alt="Camo Series">
+                    <img id="camoFavoriteRotator" src="Camo/Camo-1.png" alt="Camo Series">
                 </div>
+
                 <h3>Camo Series</h3>
                 <p>Hunter-focused camouflage wraps made for outdoor setups, concealment, and tactical style.</p>
+
+                <div class="circle-rotator" data-theme="camoFavorite">
+                    <span class="active"></span>
+                    <span></span><span></span><span></span><span></span><span></span>
+                </div>
+
+                <br>
                 <a href="#" class="shopify-btn">Shop Soon</a>
             </div>
 
             <div class="product-card">
                 <div class="product-image">
-                    <img src="Honeycomb/Honeycomb-1.png" alt="Honeycomb Series">
+                    <img id="honeycombFavoriteRotator" src="Honeycomb/Honeycomb-1.png" alt="Honeycomb Series">
                 </div>
+
                 <h3>Honeycomb Series</h3>
                 <p>Durable, lightweight wraps designed for strength, style, and field-ready performance.</p>
+
+                <div class="circle-rotator" data-theme="honeycombFavorite">
+                    <span class="active"></span>
+                    <span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span>
+                    <span></span>
+                </div>
+
+                <br>
                 <a href="#" class="shopify-btn">Shop Soon</a>
             </div>
 
@@ -486,7 +533,58 @@
     </footer>
 
     <script>
+        const ROTATION_TIME = 3000;
+
         const themeRotators = {
+            graffitiFavorite: {
+                imageElement: document.getElementById("graffitiFavoriteRotator"),
+                images: [
+                    "Graffiti/Graffiti-1.png",
+                    "Graffiti/Graffiti-2.png",
+                    "Graffiti/Graffiti-3.png",
+                    "Graffiti/Graffiti-4.png",
+                    "Graffiti/Graffiti-5.png",
+                    "Graffiti/Graffiti-6.png",
+                    "Graffiti/Graffiti-7.png",
+                    "Graffiti/Graffiti-8.png"
+                ],
+                index: 0
+            },
+
+            camoFavorite: {
+                imageElement: document.getElementById("camoFavoriteRotator"),
+                images: [
+                    "Camo/Camo-1.png",
+                    "Camo/Camo-2.png",
+                    "Camo/Camo-3.png",
+                    "Camo/Camo-4.png",
+                    "Camo/Camo-5.png",
+                    "Camo/Camo-6.png"
+                ],
+                index: 0
+            },
+
+            honeycombFavorite: {
+                imageElement: document.getElementById("honeycombFavoriteRotator"),
+                images: [
+                    "Honeycomb/Honeycomb-1.png",
+                    "Honeycomb/Honeycomb-2.png",
+                    "Honeycomb/Honeycomb-3.png",
+                    "Honeycomb/Honeycomb-4.png",
+                    "Honeycomb/Honeycomb-5.png",
+                    "Honeycomb/Honeycomb-6.png",
+                    "Honeycomb/Honeycomb-7.png",
+                    "Honeycomb/Honeycomb-8.png",
+                    "Honeycomb/Honeycomb-9.png",
+                    "Honeycomb/Honeycomb-10.png",
+                    "Honeycomb/Honeycomb-11.png",
+                    "Honeycomb/Honeycomb-12.png",
+                    "Honeycomb/Honeycomb-13.png",
+                    "Honeycomb/Honeycomb-14.png"
+                ],
+                index: 0
+            },
+
             patriotic: {
                 imageElement: document.getElementById("patrioticRotator"),
                 images: [
@@ -528,6 +626,15 @@
             }
         };
 
+        function preloadImages() {
+            Object.values(themeRotators).forEach(rotator => {
+                rotator.images.forEach(src => {
+                    const img = new Image();
+                    img.src = src;
+                });
+            });
+        }
+
         function updateDots(themeName, activeIndex) {
             const dots = document.querySelectorAll(
                 `.circle-rotator[data-theme="${themeName}"] span`
@@ -538,6 +645,23 @@
             });
         }
 
+        function changeThemeImage(themeName, imageIndex) {
+            const rotator = themeRotators[themeName];
+
+            if (!rotator || !rotator.imageElement) {
+                return;
+            }
+
+            rotator.index = imageIndex;
+            rotator.imageElement.style.opacity = 0;
+
+            setTimeout(() => {
+                rotator.imageElement.src = rotator.images[rotator.index];
+                rotator.imageElement.style.opacity = 1;
+                updateDots(themeName, rotator.index);
+            }, 300);
+        }
+
         function rotateTheme(themeName) {
             const rotator = themeRotators[themeName];
 
@@ -545,26 +669,79 @@
                 return;
             }
 
-            rotator.index++;
+            let nextIndex = rotator.index + 1;
 
-            if (rotator.index >= rotator.images.length) {
-                rotator.index = 0;
+            if (nextIndex >= rotator.images.length) {
+                nextIndex = 0;
             }
 
-            rotator.imageElement.style.opacity = 0;
-
-            setTimeout(() => {
-                rotator.imageElement.src = rotator.images[rotator.index];
-                rotator.imageElement.style.opacity = 1;
-                updateDots(themeName, rotator.index);
-            }, 400);
+            changeThemeImage(themeName, nextIndex);
         }
 
+        function enableClickableDots() {
+            document.querySelectorAll(".circle-rotator").forEach(dotGroup => {
+                const themeName = dotGroup.dataset.theme;
+                const dots = dotGroup.querySelectorAll("span");
+
+                dots.forEach((dot, index) => {
+                    dot.addEventListener("click", () => {
+                        changeThemeImage(themeName, index);
+                    });
+                });
+            });
+        }
+
+        function enableHeaderScrollEffect() {
+            window.addEventListener("scroll", () => {
+                const header = document.querySelector(".site-header");
+
+                if (window.scrollY > 60) {
+                    header.classList.add("header-scrolled");
+                } else {
+                    header.classList.remove("header-scrolled");
+                }
+            });
+        }
+
+        function enableScrollReveal() {
+            const revealItems = document.querySelectorAll(".product-card, .theme-card");
+
+            const revealObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("reveal-visible");
+                    }
+                });
+            }, {
+                threshold: 0.15
+            });
+
+            revealItems.forEach(item => {
+                item.classList.add("reveal-hidden");
+                revealObserver.observe(item);
+            });
+        }
+
+        function enableHeroParallax() {
+            window.addEventListener("scroll", () => {
+                const hero = document.querySelector(".hero");
+                const scrollValue = window.scrollY;
+
+                hero.style.backgroundPosition = `center ${scrollValue * 0.25}px`;
+            });
+        }
+
+        preloadImages();
+        enableClickableDots();
+        enableHeaderScrollEffect();
+        enableScrollReveal();
+        enableHeroParallax();
+
         setInterval(() => {
-            rotateTheme("patriotic");
-            rotateTheme("steel");
-            rotateTheme("topographic");
-        }, 10000);
+            Object.keys(themeRotators).forEach(themeName => {
+                rotateTheme(themeName);
+            });
+        }, ROTATION_TIME);
     </script>
 
 </body>
